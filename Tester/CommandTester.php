@@ -11,13 +11,18 @@ class CommandTester extends \Symfony\Component\Console\Tester\CommandTester {
 	/**
 	 * @var array
 	 */
-	protected $defaultArguments;
+	protected $defaultInput;
 
 	/**
-	 * @param array $defaultArguments
+	 * @var int
 	 */
-	public function setDefaultArguments($defaultArguments = array()) {
-		$this->defaultArguments = $defaultArguments;
+	protected $returnCode;
+
+	/**
+	 * @param array $defaultInput
+	 */
+	public function setDefaultInput($defaultInput = array()) {
+		$this->defaultInput = $defaultInput;
 	}
 
 	/**
@@ -28,7 +33,7 @@ class CommandTester extends \Symfony\Component\Console\Tester\CommandTester {
 	}
 
 	public function setDefault($arguments = array(), $options = array()) {
-		$this->setDefaultArguments($arguments);
+		$this->setDefaultInput($arguments);
 		$this->setDefaultOptions($options);
 	}
 
@@ -38,10 +43,22 @@ class CommandTester extends \Symfony\Component\Console\Tester\CommandTester {
 	 * @return int
 	 */
 	public function execute(array $input = array(), array $options = array()) {
-		$input = array_merge($this->defaultArguments, $input);
+		$input = array_merge($this->defaultInput, $input);
 		$options = array_merge($this->defaultOptions, $options);
-		return parent::execute($input, $options);
+
+		$this->returnCode = parent::execute($input, $options);
+
+		return $this->returnCode;
 	}
+
+	/**
+	 * @return int
+	 */
+	public function getReturnCode() {
+		return $this->returnCode;
+	}
+
+
 
 
 }
