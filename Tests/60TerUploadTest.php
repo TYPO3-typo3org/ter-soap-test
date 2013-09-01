@@ -3,6 +3,7 @@
 namespace Xopn\TerFunctionalTests\Tests;
 
 use etobi\extensionUtils\Service\EmConf;
+use etobi\extensionUtils\Service\EmConfService;
 use etobi\extensionUtils\Service\Extension;
 
 class TerUploadTest extends AbstractTestCase {
@@ -32,9 +33,10 @@ class TerUploadTest extends AbstractTestCase {
 		}
 
 		// set version of the extension
-		$emConf = new EmConf($extensionFolder . DIRECTORY_SEPARATOR . 'ext_emconf.php');
+		$emConfService = new EmConfService();
+		$emConf = $emConfService->readFile($extensionFolder . DIRECTORY_SEPARATOR . 'ext_emconf.php');
 		$emConf->setVersion($extensionVersion);
-		$emConf->writeFile();
+		$emConfService->writeFile($emConf, $extensionFolder . DIRECTORY_SEPARATOR . 'ext_emconf.php');
 
 		if($assertSuccess === TRUE) {
 			$this->assertTrue(
@@ -47,8 +49,7 @@ class TerUploadTest extends AbstractTestCase {
 			$statusCode = $this->queryStatusCode($downloadUri);
 			$this->assertEquals(200, $statusCode, 'extension can be downloaded from ' . $downloadUri);
 		} else {
-			// @TODO there is no nice interface yet for Typo3ExtensionUtils
-			$this->setExpectedException('\\SoapFault');
+			$this->setExpectedException('\\etobi\\extensionUtils\\T3oSoap\\Exception\\Typo3VersionIncorrectException');
 			$this->uploadExtension($extensionKey, $extensionFolder, 'alice');
 		}
 	}

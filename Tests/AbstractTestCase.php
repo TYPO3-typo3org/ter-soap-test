@@ -2,10 +2,9 @@
 
 namespace Xopn\TerFunctionalTests\Tests;
 
-use etobi\extensionUtils\Service\EmConf;
+use etobi\extensionUtils\Service\EmConfService;
 use etobi\extensionUtils\Service\Extension;
 use etobi\extensionUtils\ter\TerUpload;
-use Symfony\Component\Console\Application;
 
 abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase {
 
@@ -188,10 +187,7 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase {
 			->setPath($path)
 		;
 
-		$response = $upload->execute();
-
-		// we assume success when result messages are set
-		return array_key_exists('resultMessages', $response) && !empty($response['resultMessages']);
+		return $upload->execute();
 	}
 
 	protected function uploadExtensionForKeyOrFail($extensionKey, $username = 'alice') {
@@ -206,9 +202,10 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase {
 		);
 
 		// set version of the extension
-		$emConf = new EmConf($extensionFolder . DIRECTORY_SEPARATOR . 'ext_emconf.php');
+		$emConfService = new EmConfService();
+		$emConf = $emConfService->readFile($extensionFolder . DIRECTORY_SEPARATOR . 'ext_emconf.php');
 		$emConf->setVersion($extensionVersion);
-		$emConf->writeFile();
+		$emConfService->writeFile($emConf, $extensionFolder . DIRECTORY_SEPARATOR . 'ext_emconf.php');
 
 		$return = $this->uploadExtension($extensionKey, $extensionFolder, $username);
 		if(!$return) {
@@ -324,13 +321,14 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase {
 	 * @param $versionString
 	 */
 	protected function setDependingTypo3Version($path, $versionString) {
-		$emConf = new EmConf($path . DIRECTORY_SEPARATOR . 'ext_emconf.php');
+		$emConfService = new EmConfService();
+		$emConf = $emConfService->readFile($path . DIRECTORY_SEPARATOR . 'ext_emconf.php');
 		$emConf['constraints'] = array(
 			'depends' => array(
 				'typo3' => $versionString,
 			),
 		);
-		$emConf->writeFile();
+		$emConfService->writeFile($emConf, $path . DIRECTORY_SEPARATOR . 'ext_emconf.php');
 	}
 
 	public function getInvalidExtensionKeys() {
