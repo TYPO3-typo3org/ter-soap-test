@@ -1,0 +1,19 @@
+# TYPO3 Extension Repository Functional Tests
+
+Functional Tests for TYPO3 TER SOAP API.
+
+This is work in progress. I just want to document the current state (see `git log` for when this file was updated ;) )
+
+## Setup
+
+ 1. Checkout this extension
+ 2. Checkout https://github.com/czenker/Typo3ExtensionUtils.git and (IMPORTANT!) checkout the dev-2.0 branch
+    and make sure to checkout the submodules
+ 3. maybe you have to fix the
+ 4. adapt config.php to your needs. Most importantly adapt the "wsdlUrl" and "extensionDownloadUrl".
+ 5. run "phpunit Tests/"
+
+## TODO
+
+Right now Typo3ExtensionUtils does not have a final API for extension uploads. So there should be more tests added.
+
