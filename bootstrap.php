@@ -7,7 +7,6 @@ require_once(EXTENSION_UTILS_PATH . DIRECTORY_SEPARATOR . 'lib' . DIRECTORY_SEPA
 
 // poor men's autoloader
 $basePath = dirname(__FILE__) . DIRECTORY_SEPARATOR ;
-require_once($basePath . 'Tester' . DIRECTORY_SEPARATOR . 'CommandTester.php');
 require_once($basePath . 'Utility' . DIRECTORY_SEPARATOR . 'Config.php');
 require_once($basePath . 'Tests' . DIRECTORY_SEPARATOR . 'AbstractTestCase.php');
 
