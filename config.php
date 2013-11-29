@@ -1,10 +1,10 @@
 <?php
 
-$baseUrl = getenv('TERTEST_BASEURL') ?: 't3org.dev';
+$domain = getenv('TERTEST_DOMAIN') ?: 't3org.dev';
 
 return array(
-	'wsdlUrl' => sprintf('http://%s/wsdl/tx_ter_wsdl.php', $baseUrl),
-	'extensionDownloadUrl' => sprintf('http://%s/fileadmin/ter', $baseUrl),
+	'wsdlUrl' => sprintf('http://%s/wsdl/tx_ter_wsdl.php', $domain),
+	'extensionDownloadUrl' => sprintf('http://%s/fileadmin/ter', $domain),
 
 	'users' => array(
 		'alice' => 'alice-password',

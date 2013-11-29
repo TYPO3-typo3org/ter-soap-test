@@ -1,10 +1,13 @@
 <phpunit
-		bootstrap="bootstrap.php"
-		colors="true"
-		>
+	bootstrap="../bootstrap.php"
+	colors="false"
+	>
 	<testsuites>
 		<testsuite name="Tests">
-			<directory>../../Tests</directory>
+			<directory>../Tests</directory>
 		</testsuite>
 	</testsuites>
+	<php>
+		<env name="TERTEST_DOMAIN" value="www.deploy.dev.t3o.typo3.org"/>
+	</php>
 </phpunit>
