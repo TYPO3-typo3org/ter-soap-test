@@ -1,0 +1,17 @@
+{
+    "minimum-stability": "dev",
+    "require": {
+        "phpunit/phpunit": "3.7.*",
+        "czenker/Typo3ExtensionUtils": "dev-dev-2.0"
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "https://github.com/czenker/Typo3ExtensionUtils"
+		}
+	]
+
+}

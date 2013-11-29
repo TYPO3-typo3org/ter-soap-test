@@ -1,9 +1,5 @@
 <?php
-
-define('EXTENSION_UTILS_PATH', realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Typo3ExtensionUtils'));
-
-// autoloader for Typo3ExtensionUtils
-require_once(EXTENSION_UTILS_PATH . DIRECTORY_SEPARATOR . 'lib' . DIRECTORY_SEPARATOR . 'bootstrap.php');
+require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php');
 
 // poor men's autoloader
 $basePath = dirname(__FILE__) . DIRECTORY_SEPARATOR ;

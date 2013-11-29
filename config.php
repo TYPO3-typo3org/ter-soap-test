@@ -1,8 +1,10 @@
 <?php
 
+$baseUrl = getenv('TERTEST_BASEURL') ?: 't3org.dev';
+
 return array(
-	'wsdlUrl' => 'http://t3org.dev/wsdl/tx_ter_wsdl.php',
-	'extensionDownloadUrl' => 'http://t3org.dev/fileadmin/ter',
+	'wsdlUrl' => sprintf('http://%s/wsdl/tx_ter_wsdl.php', $baseUrl),
+	'extensionDownloadUrl' => sprintf('http://%s/fileadmin/ter', $baseUrl),
 
 	'users' => array(
 		'alice' => 'alice-password',
@@ -11,7 +13,7 @@ return array(
 	),
 	'typo3Version' => array(
 		// should be dynamic
-		'min' => '4.5.0',
-		'max' => '6.1.99'
+		'min' => getenv('TERTEST_TYPO3VERSION_MIN') ?: '4.5.0',
+		'max' => getenv('TERTEST_TYPO3VERSION_MAX') ?: '6.1.99'
 	),
 );
