@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="unit" basedir="../../">
+	<!-- set ${configuration.phpunit} and ${configuration.group} in Jenkins to enviorment xml-->	
+
+	<target name="clean" description="Delete files from previous runs">
+		<mkdir dir="${basedir}/build/logs/detail" />
+		<mkdir dir="${basedir}/build/reports" />
+		<delete>
+			<fileset dir="${basedir}/build/logs"><include name="*.xml" /></fileset>
+			<fileset dir="${basedir}/build/logs/detail"><include name="*.xml" /></fileset>
+			<fileset dir="${basedir}/build/reports"><include name="*.*" /></fileset>
+		</delete>
+	</target>
+
+	<target name="phpunit-binary" description="install or update the phpunit binary">
+		<exec executable="composer" failonerror="true" dir="${basedir}">
+			<arg value="install" />
+		</exec>
+	</target>
+
+	<target name="run" depends="clean,phpunit-binary,test" description="Initial ant target used by Jenkins, containing the basic tests">
+	</target>
+
+	<!-- Test Cases -->		
+	<target name="test" depends="clean,phpunit-binary" description="Run UnitTests in Tests/Unit/PHPUnit">
+		<exec executable="./phpunit" failonerror="true" dir="${basedir}/bin">
+			<arg value="--configuration=../conf/${configuration.phpunit}" />
+			<arg value="--log-junit=${basedir}/build/logs/detail/${configuration.phpunit}" />
+			<arg value="--verbose" />
+		</exec>
+	</target>
+</project>
