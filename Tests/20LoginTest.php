@@ -4,6 +4,9 @@ namespace Xopn\TerFunctionalTests\Tests;
 
 class LoginTest extends AbstractTestCase {
 
+	/**
+	 * @group production
+	 */
 	public function testLoginWithInvalidCredentials() {
 		/** @var \etobi\extensionUtils\T3oSoap\LoginRequest $requestObject */
 		$requestObject = $this->getRequestObject('\\etobi\\extensionUtils\\T3oSoap\\LoginRequest');
