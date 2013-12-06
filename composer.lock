@@ -11,12 +11,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/czenker/Typo3ExtensionUtils.git",
-                "reference": "37f307130dcd21b5e6faeeb25746e684765ce52a"
+                "reference": "250f8b1f12b03285710fa400e74a2ec32daaf06c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/czenker/Typo3ExtensionUtils/zipball/37f307130dcd21b5e6faeeb25746e684765ce52a",
-                "reference": "37f307130dcd21b5e6faeeb25746e684765ce52a",
+                "url": "https://api.github.com/repos/czenker/Typo3ExtensionUtils/zipball/250f8b1f12b03285710fa400e74a2ec32daaf06c",
+                "reference": "250f8b1f12b03285710fa400e74a2ec32daaf06c",
                 "shasum": ""
             },
             "require": {
@@ -38,7 +38,7 @@
             "support": {
                 "source": "https://github.com/czenker/Typo3ExtensionUtils/tree/dev-2.0"
             },
-            "time": "2013-11-29 11:48:15"
+            "time": "2013-12-06 11:23:07"
         },
         {
             "name": "phpunit/php-code-coverage",
