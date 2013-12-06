@@ -25,6 +25,17 @@ $EM_CONF[$_EXTKEY] = array (
 	'module' => '',
 	'state' => 'beta',
 	'uploadfolder' => 1,
+	'constraints' => array(
+		'depends' => array(
+			'cms' => '',
+			'extbase' => '',
+			'fluid' => '',
+		),
+		'conflicts' => array(
+		),
+		'suggests' => array(
+		),
+	),
 	'createDirs' => '',
 	'modify_tables' => '',
 	'clearcacheonload' => 0,
