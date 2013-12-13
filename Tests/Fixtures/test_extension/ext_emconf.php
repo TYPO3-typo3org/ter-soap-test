@@ -1,18 +1,8 @@
 <?php
 
-/***************************************************************
- * Extension Manager/Repository config file for ext "news".
- *
- * Auto generated 30-08-2013 15:07
- *
- * Manual updates:
- * Only the data in the array - everything else is removed by next
- * writing. "version" and "dependencies" must not be touched!
- ***************************************************************/
-
 $EM_CONF[$_EXTKEY] = array (
-	'title' => 'News system',
-	'description' => 'Versatile news extension, based on extbase & fluid. Editor friendly, default integration of social sharing and many other features',
+	'title' => 'Test extension',
+	'description' => 'A test extension by the T3o Team that is used for automated testing. It does not do anything useful, and just holds a dummy file. Check the README.',
 	'category' => 'fe',
 	'shy' => 0,
 	'version' => '2.2.0',
@@ -40,8 +30,8 @@ $EM_CONF[$_EXTKEY] = array (
 	'modify_tables' => '',
 	'clearcacheonload' => 0,
 	'lockType' => '',
-	'author' => 'Georg Ringer',
-	'author_email' => 'typo3@ringerge.org',
+	'author' => 'Christian Zenker',
+	'author_email' => 'typo3@xopn.de',
 	'author_company' => '',
 	'CGLcompliance' => NULL,
 	'CGLcompliance_note' => NULL,
