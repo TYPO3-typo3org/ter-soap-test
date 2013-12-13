@@ -10,6 +10,8 @@ return array(
 		'alice' => 'alice-password',
 		'bob' => 'bob-password',
 		'eve' => 'eve-password',
+		'reviewer' => 'reviewer-password',
+		'admin' => 'admin-password',
 	),
 	'typo3Version' => array(
 		// should be dynamic

@@ -34,4 +34,20 @@ class TransferKeyTest extends AbstractTestCase {
 		$this->setExpectedException('\\etobi\\extensionUtils\\T3oSoap\\Exception\\AccessDeniedException');
 		$this->transferKey($extensionKey, 'eve', 'bob');
 	}
+
+	public function testTransferKeyCanBeTransferedByAdmin() {
+		$extensionKey = $this->getSomeExtensionKey();
+
+		$this->registerKeyOrFail($extensionKey, 'alice');
+
+		$this->assertTrue(
+			$this->transferKey($extensionKey, 'admin', 'bob'),
+			'admin can transfer ' . $extensionKey . ' to bob'
+		);
+
+		$this->assertTrue(
+			$this->deleteKey($extensionKey, 'bob'),
+			'bob can delete the key assigned to him'
+		);
+	}
 }

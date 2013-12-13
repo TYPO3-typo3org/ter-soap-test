@@ -31,6 +31,18 @@ class DeleteKeyTest extends AbstractTestCase {
 		$this->tryToDeleteExtensionKey($extensionKey, 'alice');
 	}
 
+	public function testKeyCanBeDeletedByAdminUsers() {
+		$extensionKey = $this->getSomeExtensionKey();
+		$username = 'alice';
+
+		$this->registerKeyOrFail($extensionKey, $username);
+
+		$this->assertTrue(
+			$this->deleteKey($extensionKey, 'admin'),
+			'An admin can delete any unused key'
+		);
+	}
+
 	public function testDeleteOfUnregisteredKeyFails() {
 		$this->setExpectedException('\\etobi\\extensionUtils\\T3oSoap\\Exception\\ExtensionKeyNotExistsException');
 

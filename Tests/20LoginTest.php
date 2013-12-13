@@ -54,6 +54,8 @@ class LoginTest extends AbstractTestCase {
 			array('alice'),
 			array('bob'),
 			array('eve'),
+			array('reviewer'),
+			array('admin'),
 		);
 	}
 }
