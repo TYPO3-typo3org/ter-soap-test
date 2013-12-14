@@ -97,6 +97,35 @@ class TerUploadTest extends AbstractTestCase {
 		return $return;
 	}
 
+	public function testUploadingSameVersionTwiceFails() {
+		$extensionFolder = $this->createExtension();
+		$extensionKey = $this->getSomeExtensionKey();
+		$extensionVersion = $this->getNextVersion();
+
+		$this->registerKeyOrFail($extensionKey, 'alice');
+		$this->setDependingTypo3Version(
+				$extensionFolder,
+				$this->getConfiguration('typo3Version.min') . '-' . $this->getConfiguration('typo3Version.max')
+			);
+
+		// set version of the extension
+		$emConfService = new EmConfService();
+		$emConf = $emConfService->readFile($extensionFolder . DIRECTORY_SEPARATOR . 'ext_emconf.php');
+		$emConf->setVersion($extensionVersion);
+		$emConfService->writeFile($emConf, $extensionFolder . DIRECTORY_SEPARATOR . 'ext_emconf.php');
+
+		$this->assertTrue(
+			$this->uploadExtension($extensionKey, $extensionFolder, 'alice'),
+			'first upload accepted'
+		);
+
+		$this->setExpectedException('\\etobi\\extensionUtils\\T3oSoap\\Exception\\ExtensionVersionExistsException');
+		$this->assertFalse(
+			$this->uploadExtension($extensionKey, $extensionFolder, 'alice'),
+			'uploading same version again fails'
+		);
+	}
+
 
 
 }

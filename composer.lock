@@ -11,12 +11,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/czenker/Typo3ExtensionUtils.git",
-                "reference": "855b9e734afd1e03f3671143c99431596b6983ac"
+                "reference": "d55cd91c962f7706a5517fb7cfe86afc7955bf47"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/czenker/Typo3ExtensionUtils/zipball/855b9e734afd1e03f3671143c99431596b6983ac",
-                "reference": "855b9e734afd1e03f3671143c99431596b6983ac",
+                "url": "https://api.github.com/repos/czenker/Typo3ExtensionUtils/zipball/d55cd91c962f7706a5517fb7cfe86afc7955bf47",
+                "reference": "d55cd91c962f7706a5517fb7cfe86afc7955bf47",
                 "shasum": ""
             },
             "require": {
