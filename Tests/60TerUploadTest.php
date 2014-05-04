@@ -129,10 +129,11 @@ class TerUploadTest extends AbstractTestCase {
 
 	public function testUploadingVersionWithUppercaseExtensionKeyFails() {
 		$extensionFolder = $this->createExtension();
-		$extensionKey = 'testWithCapitalCHARS_' . gmdate('YmdHis') . '_' . rand(100000,999999);
+		$extensionKey = 'TEST_' . gmdate('YmdHis') . '_' . rand(100000,999999);
 		$extensionVersion = $this->getNextVersion();
 
-		$this->registerKeyOrFail($extensionKey, 'alice');
+		$registerExtensionKeyWithLowercaseChars = strtolower($extensionKey);
+		$this->registerKeyOrFail($registerExtensionKeyWithLowercaseChars, 'alice');
 		$this->setDependingTypo3Version(
 			$extensionFolder,
 			$this->getConfiguration('typo3Version.min') . '-' . $this->getConfiguration('typo3Version.max')
@@ -144,6 +145,10 @@ class TerUploadTest extends AbstractTestCase {
 		$emConf->setVersion($extensionVersion);
 		$emConfService->writeFile($emConf, $extensionFolder . DIRECTORY_SEPARATOR . 'ext_emconf.php');
 
+		$this->setExpectedException(
+			'\\etobi\\extensionUtils\\T3oSoap\\Exception\\ExtensionKeyNotValidException',
+			'Extension key is invalid.'
+		);
 		$this->assertFalse(
 			$this->uploadExtension($extensionKey, $extensionFolder, 'alice'),
 			'upload with capitalchars fails'
