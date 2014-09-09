@@ -61,6 +61,12 @@ class TerUploadTest extends AbstractTestCase {
 				TRUE,
 				'upload with allowed versions only'
 			),
+			// test can be removed once these versions are out of support
+			array(
+				'6.1.0-6.2.99',
+				TRUE,
+				'https://forge.typo3.org/issues/61490'
+			),
 			array(
 				'3.8.0-4.2.99',
 				TRUE,
