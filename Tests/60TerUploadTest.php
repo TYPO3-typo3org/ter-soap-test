@@ -134,6 +134,7 @@ class TerUploadTest extends AbstractTestCase {
 
 
 	public function testUploadingVersionWithUppercaseExtensionKeyFails() {
+		$this->markTestSkipped('Tests skipped, as we are converting the extension key in the TER upload to lowercase, so this will never fail again');
 		$extensionFolder = $this->createExtension();
 		$extensionKey = 'TEST_' . gmdate('YmdHis') . '_' . rand(100000,999999);
 		$extensionVersion = $this->getNextVersion();
