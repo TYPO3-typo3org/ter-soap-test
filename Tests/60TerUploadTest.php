@@ -83,7 +83,7 @@ class TerUploadTest extends AbstractTestCase {
 				'upload with not yet released TYPO3 versions only'
 			),
 			array(
-				$this->getConfiguration('typo3Version.min') . '-6.3.99',
+				$this->getConfiguration('typo3Version.min') . '-9.9.99',
 				FALSE,
 				'upload with allowed and not yet released TYPO3 versions'
 			),
